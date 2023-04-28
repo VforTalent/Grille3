@@ -2,89 +2,51 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Liste de sites web</title>
+    <title>Aperçus de sites web</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      /* Styles pour l'affichage en grille */
+      .sites {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 0 10px;
       }
-      
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-        padding: 0 10px;
-      }
-      
-      h1 {
-        font-size: 24px;
-        margin: 10px 0;
-        text-align: center;
-      }
-      
+
       .site {
-        display: inline-block;
-        margin: 10px;
-        width: calc(33.33% - 20px);
+        height: 400px;
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
-      
+
+      /* Styles pour l'affichage en liste */
+      .sites.list {
+        display: block;
+        text-align: center;
+      }
+
+      .sites.list .site {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      /* Styles communs */
       .site:hover {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
-      
-      .site iframe {
-        width: 100%;
-        height: 300px;
+
+      button {
+        margin: 10px;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
         border: none;
-      }
-      
-      .btn-group {
-        margin-top: 10px;
-        display: flex;
-        justify-content: flex-end;
-      }
-      
-      .btn-group button {
-        margin-left: 10px;
-        font-size: 16px;
-        padding: 5px 10px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 4px;
         cursor: pointer;
+        transition: background-color 0.3s;
       }
-      
-      .btn-group button.active {
-        background-color: #007aff;
-        color: #fff;
-        border-color: #007aff;
-      }
-      
-      @media only screen and (max-width: 768px) {
-        .site {
-          width: 100%;
-        }
-      }
-      
-      .full-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .full-screen iframe {
-        width: 90%;
-        height: 90%;
-        border: none;
+
+      button:hover {
+        background-color: #3e8e41;
       }
     </style>
   </head>
