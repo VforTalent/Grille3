@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Aperçu des sites web</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: Arial, sans-serif;
+        padding: 0 10px;
+      }
+      
+      h1 {
+        text-align: center;
+        margin: 30px 0;
+      }
+      
+      .btn-group {
+        position: fixed;
+        top: 0;
+        left: 10px;
+        z-index: 1;
+      }
+      
+      .btn {
+        display: inline-block;
+        padding: 10px;
+        border: none;
+        background-color: #ddd;
+        color: #333;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      
+      .btn.active {
+        background-color: #333;
+        color: #fff;
+      }
+      
+      .site {
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .site h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      
+      .site iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+      }
+      
+      .site.grid {
+        flex-wrap: wrap;
+      }
+      
+      .site.grid .site {
+        width: 33.33%;
+        margin-bottom: 30px;
+      }
+      
+      .site.full {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .site.full iframe {
+        height: 80vh;
+        max-width: 90%;
+        max-height: 90%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn-group">
+      <button class="btn active" id="list-view-btn">Liste</button>
+      <button class="btn" id="grid-view-btn">Grille</button>
+      <button class="btn" id="full-screen-btn">Plein écran</button>
+    </div>
+    
+    <h1>Aperçu des sites web</h1>
+    
+    <div class="site">
+      <h2>17mars.com</h2>
+      <iframe src="https://17mars.com"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>studiotaktil.com</h2>
+      <iframe src="https://studiotaktil.com/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>unit.tv</h2>
+      <iframe src="https://www.unit.tv/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>modlo.tv</h2>
+      <iframe src="https://www.modlo.tv/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>tactyc.studio</h2>
+      <iframe src="https://www.tactyc.studio/"></iframe>
+    </div>
+    
+   <div class="site">
+           <h2>daydreamervfx.com</h2>
+      <iframe src="https://www.daydreamervfx.com/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>rawandrendered.com</h2>
+      <iframe src="https://www.rawandrendered.com/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>altcinc.com</h2>
+      <iframe src="https://www.altcinc.com/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>onesal.com</h2>
+      <iframe src="https://onesal.com/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>firm-studio.fr</h2>
+      <iframe src="https://www.firm-studio.fr/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>spotstudio.es</h2>
+      <iframe src="https://spotstudio.es/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>bluenode.paris</h2>
+      <iframe src="https://www.bluenode.paris/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>studioriver.fr</h2>
+      <iframe src="https://www.studioriver.fr/"></iframe>
+    </div>
+    
+    <div class="site">
+      <h2>newformat.io</h2>
+      <iframe src="https://newformat.io/"></iframe>
+    </div>
+    
+    <script>
+      const listViewBtn = document.getElementById("list-view-btn");
+      const gridViewBtn = document.getElementById("grid-view-btn");
+      const fullScreenBtn = document.getElementById("full-screen-btn");
+      const sites = document.querySelectorAll(".site");
+      
+      listViewBtn.addEventListener("click", function() {
+        listViewBtn.classList.add("active");
+        gridViewBtn.classList.remove("active");
+        for (let i = 0; i < sites.length; i++) {
+          sites[i].classList.remove("grid");
+        }
+      });
+      
+      gridViewBtn.addEventListener("click", function() {
+        gridViewBtn.classList.add("active");
+        listViewBtn.classList.remove("active");
+        for (let i = 0; i < sites.length; i++) {
+          sites[i].classList.add("grid");
+        }
+      });
+      
+      fullScreenBtn.addEventListener("click", function() {
+        const activeSite = document.querySelector(".site.active");
+        if (activeSite) {
+          activeSite.classList.remove("active");
+        } else {
+          for (let i = 0; i < sites.length; i++) {
+            sites[i].addEventListener("click", function() {
+              sites[i].classList.add("active");
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
