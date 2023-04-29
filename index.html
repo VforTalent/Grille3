@@ -1,170 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Aperçus de sites web</title>
-    <style>
-      /* Styles pour l'affichage en grille */
-      .sites {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin: 0 10px;
-      }
+<head>
+	<title>Basculer entre une vue en grille et une vue en liste</title>
+	<style>
+		/* Styles pour les images en grille */
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			grid-gap: 20px;
+		}
 
-      .site {
-        height: 400px;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+		.grid-item {
+			border: 1px solid black;
+			padding: 20px;
+			text-align: center;
+		}
 
-      /* Styles pour l'affichage en liste */
-      .sites.list {
-        display: block;
-        text-align: center;
-      }
+		/* Styles pour les images en liste */
+		.list-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
 
-      .sites.list .site {
-        width: 100%;
-        margin-bottom: 10px;
-      }
+		.list-item {
+			border: 1px solid black;
+			padding: 20px;
+			text-align: center;
+			width: 100%;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<h1>Ma galerie d'images</h1>
 
-      /* Styles communs */
-      .site:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
+	<!-- Bouton de basculement -->
+	<button onclick="toggleView()">Basculez entre une vue en grille et une vue en liste</button>
 
-      button {
-        margin: 10px;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
+	<!-- Conteneur d'images -->
+	<div id="image-container" class="grid-container">
+		<div class="grid-item"><img src="image1.jpg"></div>
+		<div class="grid-item"><img src="image2.jpg"></div>
+		<div class="grid-item"><img src="image3.jpg"></div>
+		 <div class="grid-item"><img src="image4.jpg"></div>
+		<div class="grid-item"><img src="image5.jpg"></div>
+	</div>
 
-      button:hover {
-        background-color: #3e8e41;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="btn-group">
-      <button class="btn active" id="list-view-btn">Liste</button>
-      <button class="btn" id="grid-view-btn">Grille</button>
-      <button class="btn" id="full-screen-btn">Plein écran</button>
-    </div>
-    
-    <h1>Aperçu des sites web</h1>
-    
-    <div class="site">
-      <h2>17mars.com</h2>
-      <iframe src="https://17mars.com"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>studiotaktil.com</h2>
-      <iframe src="https://studiotaktil.com/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>unit.tv</h2>
-      <iframe src="https://www.unit.tv/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>modlo.tv</h2>
-      <iframe src="https://www.modlo.tv/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>tactyc.studio</h2>
-      <iframe src="https://www.tactyc.studio/"></iframe>
-    </div>
-    
-   <div class="site">
-           <h2>daydreamervfx.com</h2>
-      <iframe src="https://www.daydreamervfx.com/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>rawandrendered.com</h2>
-      <iframe src="https://www.rawandrendered.com/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>altcinc.com</h2>
-      <iframe src="https://www.altcinc.com/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>onesal.com</h2>
-      <iframe src="https://onesal.com/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>firm-studio.fr</h2>
-      <iframe src="https://www.firm-studio.fr/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>spotstudio.es</h2>
-      <iframe src="https://spotstudio.es/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>bluenode.paris</h2>
-      <iframe src="https://www.bluenode.paris/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>studioriver.fr</h2>
-      <iframe src="https://www.studioriver.fr/"></iframe>
-    </div>
-    
-    <div class="site">
-      <h2>newformat.io</h2>
-      <iframe src="https://newformat.io/"></iframe>
-    </div>
-    
-  <script>
-    const listViewBtn = document.getElementById('list-view-btn');
-  const gridViewBtn = document.getElementById('grid-view-btn');
-  const fullScreenBtn = document.getElementById('full-screen-btn');
-  const sitesDiv = document.querySelector('.sites');
-  
-  listViewBtn.addEventListener('click', function() {
-    listViewBtn.classList.add('active');
-    gridViewBtn.classList.remove('active');
-    sitesDiv.style.cssText = 'display: block; text-align: center;';
-  });
-  
-  gridViewBtn.addEventListener('click', function() {
-    gridViewBtn.classList.add('active');
-    listViewBtn.classList.remove('active');
-    sitesDiv.style.cssText = 'display: flex; flex-wrap: wrap; justify-content: space-between;';
-  });
-  
-  fullScreenBtn.addEventListener('click', function() {
-    const siteFrames = document.querySelectorAll('.site iframe');
-    siteFrames.forEach(function(frame) {
-      frame.addEventListener('click', function() {
-        const fullScreenDiv = document.createElement('div');
-        fullScreenDiv.classList.add('full-screen');
-        const fullScreenFrame = document.createElement('iframe');
-        fullScreenFrame.src = frame.src;
-        fullScreenDiv.appendChild(fullScreenFrame);
-        document.body.appendChild(fullScreenDiv);
-        
-        fullScreenDiv.addEventListener('click', function() {
-          fullScreenDiv.remove();
-        });
-      });
-    });
-  });
-</script>
-  </body>
-</html>>
-
+	<!-- Script JavaScript pour basculer entre la vue en grille et la vue en liste -->
+	<script>
+		function toggleView() {
+			var container = document.getElementById("image-container");
+			if (container.classList.contains("grid-container")) {
+				container.classList.remove("grid-container");
+				container.classList.add("list-container");
+				container.childNodes.forEach(function(node) {
+					node.classList.remove("grid-item");
+					node.classList.add("list-item");
+				});
+			} else {
+				container.classList.remove("list-container");
+				container.classList.add("grid-container");
+				container.childNodes.forEach(function(node) {
+					node.classList.remove("list-item");
+					node.classList.add("grid-item");
+				});
+			}
+		}
+	</script>
+</body>
+</html>
