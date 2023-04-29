@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Exemple de basculement d'affichage avec bouton</title>
-  <style>
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr));
-      gap: 20px;
-    }
-    .list-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .image {
-      width: 100%;
-      height: auto;
-    }
-  </style>
+	<title>Basculer entre une vue en grille et une vue en liste</title>
+	<style>
+		/* Styles pour les images en grille */
+		.grid-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			grid-gap: 20px;
+		}
+
+		.grid-item {
+			border: 1px solid black;
+			padding: 20px;
+			text-align: center;
+		}
+
+		/* Styles pour les images en liste */
+		.list-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.list-item {
+			border: 1px solid black;
+			padding: 20px;
+			text-align: center;
+			width: 100%;
+			box-sizing: border-box;
+		}
+	</style>
 </head>
 <body>
-  <div class="container">
-    <img class="image" src="image1.jpg" alt="Image 1">
-    <img class="image" src="image2.jpg" alt="Image 2">
-    <img class="image" src="image3.jpg" alt="Image 3">
-    <img class="image" src="image4.jpg" alt="Image 4">
-  </div>
+	<h1>Ma galerie d'images</h1>
+
+	<!-- Bouton de basculement -->
+	<button onclick="toggleView()">Basculez entre une vue en grille et une vue en liste</button>
+
+	<!-- Conteneur d'images -->
+	<div id="image-container" class="grid-container">
+		<div class="grid-item"><img src="image1.jpg"></div>
+		<div class="grid-item"><img src="image2.jpg"></div>
+		<div class="grid-item"><img src="image3.jpg"></div>
+		 <div class="grid-item"><img src="image4.jpg"></div>
+		<div class="grid-item"><img src="image5.jpg"></div>
+	</div>
+
+	<!-- Script JavaScript pour basculer entre la vue en grille et la vue en liste -->
 
   <button id="toggle-view">Afficher en liste</button>
 
