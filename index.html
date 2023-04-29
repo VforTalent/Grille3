@@ -1,81 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Basculer entre une vue en grille et une vue en liste</title>
+	<title>Ma liste de sites web</title>
 	<style>
-		/* Styles pour les images en grille */
-		.grid-container {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-			grid-gap: 20px;
+		iframe {
+			width: 100%;
+			height: 300px;
+			border: none;
 		}
 
-		.grid-item {
-			border: 1px solid black;
-			padding: 20px;
-			text-align: center;
-		}
-
-		/* Styles pour les images en liste */
 		.list-container {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			gap: 20px;
 		}
+	</style>
+</head>
+<body>
+	<h1>Ma liste de sites web</h1>
 
-		.list-item {
-			border: 1px solid black;
-			padding: 20px;
-			text-align: center;
+	<!-- Bouton de basculement -->
+	<button id="toggle-view">Basculez entre une vue en grille et une vue en liste</button>
+
+	<!-- Conteneur d'iframes -->
+	<div id="iframe-container" class="list-container">
+		<iframe src="http://17mars.com"></iframe>
+		<iframe src="https://studiotaktil.com/"></iframe>
+		<iframe src="https://www.unit.tv/"></iframe>
+		<iframe src="https://www.modlo.tv/"></iframe>
+		<iframe src="https://www.tactyc.studio/"></iframe>
+		<iframe src="https://www.daydreamervfx.com/"></iframe>
+		<iframe src="https://www.rawandrendered.com/"></iframe>
+		<iframe src="https://www.altcinc.com/"></iframe>
+		<iframe src="https://onesal.com/"></iframe>
+		<iframe src="https://www.firm-studio.fr/"></iframe>
+		<iframe src="https://spotstudio.es/"></iframe>
+		<iframe src="https://www.bluenode.paris/"></iframe>
+		 <iframe src="https://www.studioriver.fr/"></iframe>
+		<iframe src="https://newformat.io/"></iframe>
+	</div>
+
+	<!-- Script JavaScript pour basculer entre la vue en grille et la vue en liste -->
+	<script>
+		const button = document.querySelector('#toggle-view');
+		const gridContainer = document.querySelector('#iframe-container');
+		const listContainer = document.querySelector('.list-container');
+
+		button.addEventListener('click', () => {
+			if (gridContainer.style.display === 'none') {
+				gridContainer.style.display = 'grid';
+				listContainer.style.display = 'none';
+				button.textContent = 'Afficher en liste';
+			} else {
+				gridContainer.style.display = 'none';
+				listContainer.style.display = 'flex';
+				button.textContent = 'Afficher en grille';
+			}
+		});
+	</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ma liste de sites web</title>
+	<style>
+		iframe {
 			width: 100%;
-			box-sizing: border-box;
+			height: 300px;
+			border: none;
+		}
+
+		.list-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
 		}
 	</style>
 </head>
 <body>
-	<h1>Ma galerie d'images</h1>
+	<h1>Ma liste de sites web</h1>
 
 	<!-- Bouton de basculement -->
-	<button onclick="toggleView()">Basculez entre une vue en grille et une vue en liste</button>
+	<button id="toggle-view">Basculez entre une vue en grille et une vue en liste</button>
 
-	<!-- Conteneur d'images -->
-	<div id="image-container" class="grid-container">
-		<div class="grid-item"><img src="image1.jpg"></div>
-		<div class="grid-item"><img src="image2.jpg"></div>
-		<div class="grid-item"><img src="image3.jpg"></div>
-		 <div class="grid-item"><img src="image4.jpg"></div>
-		<div class="grid-item"><img src="image5.jpg"></div>
+	<!-- Conteneur d'iframes -->
+	<div id="iframe-container" class="list-container">
+		<iframe src="http://17mars.com"></iframe>
+		<iframe src="https://studiotaktil.com/"></iframe>
+		<iframe src="https://www.unit.tv/"></iframe>
+		<iframe src="https://www.modlo.tv/"></iframe>
+		<iframe src="https://www.tactyc.studio/"></iframe>
+		<iframe src="https://www.daydreamervfx.com/"></iframe>
+		<iframe src="https://www.rawandrendered.com/"></iframe>
+		<iframe src="https://www.altcinc.com/"></iframe>
+		<iframe src="https://onesal.com/"></iframe>
+		<iframe src="https://www.firm-studio.fr/"></iframe>
+		<iframe src="https://spotstudio.es/"></iframe>
+		<iframe src="https://www.bluenode.paris/"></iframe>
+		 <iframe src="https://www.studioriver.fr/"></iframe>
+		<iframe src="https://newformat.io/"></iframe>
 	</div>
 
 	<!-- Script JavaScript pour basculer entre la vue en grille et la vue en liste -->
+	<script>
+		const button = document.querySelector('#toggle-view');
+		const gridContainer = document.querySelector('#iframe-container');
+		const listContainer = document.querySelector('.list-container');
 
-  <button id="toggle-view">Afficher en liste</button>
-
-  <script>
-    const button = document.querySelector('#toggle-view');
-
-    button.addEventListener('click', () => {
-      const container = document.querySelector('.container');
-      const listContainer = document.querySelector('.list-container');
-      
-      if (container.style.display !== 'none') {
-        container.style.display = 'none';
-        listContainer.style.display = 'flex';
-        button.textContent = 'Afficher en grille';
-      } else {
-        container.style.display = 'grid';
-        listContainer.style.display = 'none';
-        button.textContent = 'Afficher en liste';
-      }
-    });
-  </script>
-
-  <div class="list-container" style="display: none;">
-    <img class="image" src="image1.jpg" alt="Image 1">
-    <img class="image" src="image2.jpg" alt="Image 2">
-    <img class="image" src="image3.jpg" alt="Image 3">
-    <img class="image" src="image4.jpg" alt="Image 4">
-  </div>
+		button.addEventListener('click', () => {
+			if (gridContainer.style.display === 'none') {
+				gridContainer.style.display = 'grid';
+				listContainer.style.display = 'none';
+				button.textContent = 'Afficher en liste';
+			} else {
+				gridContainer.style.display = 'none';
+				listContainer.style.display = 'flex';
+				button.textContent = 'Afficher en grille';
+			}
+		});
+	</script>
 </body>
 </html>
