@@ -1,89 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>test de titre</title>
-	<style>
-		/* Styles pour les images en grille */
-		.grid-container {
- 			display: grid;
-  			grid-template-columns: repeat(3, 1fr);
-  			grid-gap: 10px;
-		}
-
-
-		.grid-item {
-			border: 1px solid red;
-			padding: 20px;
-			text-align: center;
-		}
-
-		/* Styles pour les images en liste */
-		.list-container {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 20px;
-		}
-
-		.list-item {
-			border: 1px solid black;
-			padding: 20px;
-			text-align: center;
-			width: 100%;
-			height: 500px;
-			box-sizing: border-box;
-		}
-	</style>
+  <meta charset="utf-8">
+  <title>Exemple de basculement d'affichage avec bouton</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr));
+      gap: 20px;
+    }
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .image {
+      width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-	<h1>Ma galerie d'images</h1>
+  <div class="container">
+    <img class="image" src="image1.jpg" alt="Image 1">
+    <img class="image" src="image2.jpg" alt="Image 2">
+    <img class="image" src="image3.jpg" alt="Image 3">
+    <img class="image" src="image4.jpg" alt="Image 4">
+  </div>
 
-	<!-- Bouton de basculement -->
-	<button onclick="toggleView()">Bouton</button>
+  <button id="toggle-view">Afficher en liste</button>
 
-	<!-- Conteneur d'images -->
-	<div id="image-container" class="grid-container">
-		<div class="grid-item"><img src="image1.jpg"></div>
-		<div class="grid-item"><img src="image2.jpg"></div>
-		<div class="grid-item"><img src="image3.jpg"></div>
-		 <div class="grid-item"><img src="image4.jpg"></div>
-		<div class="grid-item"><img src="image5.jpg"></div>
-	</div>
+  <script>
+    const button = document.querySelector('#toggle-view');
 
-	<!-- Script JavaScript pour basculer entre la vue en grille et la vue en liste -->
-	<script>
-		function toggleView() {
-			var container = document.getElementById("image-container");
-			if (container.classList.contains("grid-container")) {
-				container.classList.remove("grid-container");
-				container.classList.add("list-container");
-				container.childNodes.forEach(function(node) {
-					node.classList.remove("grid-item");
-					node.classList.add("list-item");
-				});
-			} else {
-				container.classList.remove("list-container");
-				container.classList.add("grid-container");
-				container.childNodes.forEach(function(node) {
-					node.classList.remove("list-item");
-					node.classList.add("grid-item");
-				});
-			}
-		}
-		// Sélectionner le bouton
-const button = document.querySelector('#toggle-view');
+    button.addEventListener('click', () => {
+      const container = document.querySelector('.container');
+      const listContainer = document.querySelector('.list-container');
+      
+      if (container.style.display !== 'none') {
+        container.style.display = 'none';
+        listContainer.style.display = 'flex';
+        button.textContent = 'Afficher en grille';
+      } else {
+        container.style.display = 'grid';
+        listContainer.style.display = 'none';
+        button.textContent = 'Afficher en liste';
+      }
+    });
+  </script>
 
-// Ajouter un écouteur d'événement sur le clic
-button.addEventListener('click', () => {
-  // Vérifier le texte actuel du bouton
-  if (button.textContent === 'Afficher en grille') {
-    // Changer le texte en "Afficher en liste"
-    button.textContent = 'Afficher en liste';
-  } else {
-    // Changer le texte en "Afficher en grille"
-    button.textContent = 'Afficher en grille';
-  }
-});
-	</script>
+  <div class="list-container" style="display: none;">
+    <img class="image" src="image1.jpg" alt="Image 1">
+    <img class="image" src="image2.jpg" alt="Image 2">
+    <img class="image" src="image3.jpg" alt="Image 3">
+    <img class="image" src="image4.jpg" alt="Image 4">
+  </div>
 </body>
 </html>
